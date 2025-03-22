@@ -1,30 +1,13 @@
-/* 
-    Students! You will all be completing this matching card game.
-    Follow the directions throughout this file to slowly build out 
-    the game's features.
-*/
-
-
-// These are all the symbols that the game is going to use
+// Emmanuel Michael
 const symbols = ['🍎', '🍌', '🍇', '🍓', '🍍', '🍉', '🍒', '🥝'];
-// You're going to need this to display the cards on the screen (remember there should be two of each card)
 let cards = [];
-// These will be used when the user starts choosing cards
 let firstCard = null, secondCard = null;
-// You will need to lock the board to stop users from choosing cards when they choose two wrong cards
-// (Don't have to worry about this too much)
 let lockBoard = false;
 
-/* 
-    You must initialize the game board. You have been given a shuffleArray() function.
-    This function should also reset the entire game board by making sure there's no HTML inside of the game-board div.
-    Use the createCard() function to initialize each cardElement and add it to the gameBoard.
-
-*/
 function initGame() {
     const gameBoard = document.getElementById('game-board');
     gameBoard.innerHTML = '';
-    cards = [...symbols, ...symbols];
+    cards = symbols.concat(symbols);
     shuffleArray(cards);
     cards.forEach(symbol => {
         const cardElement = createCard(symbol);
@@ -58,7 +41,6 @@ function createCard(symbol) {
 */
 function flipCard(card) {
     // If the board is supposed to be locked or you picked the same card you already picked
-    if (lockBoard || card === firstCard) return;
     if (lockBoard || card === firstCard) return;
     card.classList.add('flipped');
     card.textContent = card.dataset.symbol;
@@ -113,7 +95,6 @@ function resetBoard() {
     [firstCard, secondCard, lockBoard] = [null, null, false];
 }
 
-// Function to shuffle an array
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
