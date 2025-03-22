@@ -1,4 +1,4 @@
-// Emmanuel Michael
+// Emmanuel Michae
 const symbols = ['🍎', '🍌', '🍇', '🍓', '🍍', '🍉', '🍒', '🥝'];
 let cards = [];
 let firstCard = null, secondCard = null;
